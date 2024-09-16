@@ -242,6 +242,8 @@ class _QuranTextState extends State<QuranText> {
                                                     : 18.4.sp,
                                     fontFamily:
                                         'QCF_P${index.toString().padLeft(3, '0')}',
+                                    package: 'quran_mawaqit',
+
                                   ),
                                   children: _buildPageContent(index),
                                 ),

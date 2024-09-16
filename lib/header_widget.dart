@@ -21,7 +21,11 @@ class HeaderWidget extends StatelessWidget {
         Stack(
           children: [
             Center(
-              child: Image.asset("lib/images/888-02.png", color: Colors.white),
+              child: Image.asset(
+                "lib/images/888-02.png",
+                color: Colors.white,
+                package: 'quran_mawaqit',
+              ),
             ),
             Positioned(
               left: 15.4.w,
@@ -29,7 +33,11 @@ class HeaderWidget extends StatelessWidget {
               child: Text(
                 textAlign: TextAlign.center,
                 "آياتها\n${getVerseCount(pageDataItem["surah"])}",
-                style: TextStyle(height: 1, color: Colors.white, fontSize: 6.5.sp, fontFamily: "UthmanicHafs13"),
+                style: TextStyle(
+                    height: 1,
+                    color: Colors.white,
+                    fontSize: 6.5.sp,
+                    fontFamily: "UthmanicHafs13"),
               ),
             ),
             Center(
@@ -60,8 +68,7 @@ class HeaderWidget extends StatelessWidget {
             ),
           ],
         ),
-        if(addPadding)
-        SizedBox(height: 1.h)
+        if (addPadding) SizedBox(height: 1.h)
       ],
     );
   }

@@ -14,6 +14,7 @@ class _BasmallahState extends State<Basmallah> {
     return SizedBox(width: double.infinity,
       child: Image.asset(
         "lib/images/Basmala.png",
+        package: 'quran_mawaqit',
         color:Colors.white,
         height: 5.h,
       ),
