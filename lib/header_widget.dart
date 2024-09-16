@@ -37,7 +37,9 @@ class HeaderWidget extends StatelessWidget {
                     height: 1,
                     color: Colors.white,
                     fontSize: 6.5.sp,
-                    fontFamily: "UthmanicHafs13"),
+                    fontFamily: "UthmanicHafs13",
+                  package: 'quran_mawaqit',
+                ),
               ),
             ),
             Center(
@@ -48,6 +50,8 @@ class HeaderWidget extends StatelessWidget {
                   fontSize: 16.sp,
                   color: Colors.white,
                   height: 0,
+                  package: 'quran_mawaqit',
+
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -63,6 +67,8 @@ class HeaderWidget extends StatelessWidget {
                   height: 1,
                   fontSize: 6.5.sp,
                   fontFamily: "UthmanicHafs13",
+                  package: 'quran_mawaqit',
+
                 ),
               ),
             ),
