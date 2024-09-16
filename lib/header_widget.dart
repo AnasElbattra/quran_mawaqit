@@ -21,7 +21,7 @@ class HeaderWidget extends StatelessWidget {
         Stack(
           children: [
             Center(
-              child: Image.asset("assets/images/888-02.png", color: Colors.white),
+              child: Image.asset("lib/images/888-02.png", color: Colors.white),
             ),
             Positioned(
               left: 15.4.w,

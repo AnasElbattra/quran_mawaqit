@@ -13,7 +13,7 @@ class _BasmallahState extends State<Basmallah> {
   Widget build(BuildContext context) {
     return SizedBox(width: double.infinity,
       child: Image.asset(
-        "assets/images/Basmala.png",
+        "lib/images/Basmala.png",
         color:Colors.white,
         height: 5.h,
       ),
