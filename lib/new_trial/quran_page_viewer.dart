@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:quran/quran.dart' as quran;
 import 'package:quran_mawaqit/controller/controller.dart';
+import 'package:quran_mawaqit/controller/font_manager.dart';
+import 'package:quran_mawaqit/data_sources/quran_layout_source.dart';
+import 'package:quran_mawaqit/data_sources/quran_word_source.dart';
 import 'package:quran_mawaqit/new_trial/quran_line_widget.dart';
 
-import '../basmellah.dart';
-import '../font_manager.dart';
-import '../header_widget.dart';
-import '../models/qcf_layout_model.dart';
-import '../models/qcf_word_model.dart';
-import '../tail_list_page.dart';
-
 class QuranPageViewer extends StatefulWidget {
-  final List<QcfLineModel> layoutLines;
-  final Map<int, QcfWordModel> wordMap;
+  final QuranLayoutSource layoutSource;
+  final QuranWordSource wordSource;
 
   const QuranPageViewer({
     super.key,
-    required this.layoutLines,
-    required this.wordMap,
+    required this.layoutSource,
+    required this.wordSource,
   });
 
   @override
@@ -25,26 +20,28 @@ class QuranPageViewer extends StatefulWidget {
 }
 
 class _QuranPageViewerState extends State<QuranPageViewer> {
-  dynamic fonts;
+  List<String> fonts = [];
+
+  late final List layoutLines;
+  late final QuranWordSource wordSource;
 
   @override
   void initState() {
     super.initState();
-
-    initFonts();
-
+    layoutLines = widget.layoutSource.getLines();
+    wordSource = widget.wordSource;
+    _initFonts();
   }
 
-  Future<void> initFonts() async {
+  Future<void> _initFonts() async {
     await FontManager.downloadAndExtractFonts(
-        'https://github.com/mawaqit/Mawaqit_Boost_Projects/raw/refs/heads/main/public/QPC%20V1%20Font.ttf.zip');
+      'https://github.com/mawaqit/Mawaqit_Boost_Projects/raw/refs/heads/main/public/QPC%20V1%20Font.ttf.zip',
+    );
 
     final availableFonts = await FontManager.listAvailableFonts();
     if (availableFonts.isNotEmpty) {
       await FontManager.loadAllFonts();
-      setState(() {
-        fonts = availableFonts;
-      });
+      setState(() => fonts = availableFonts);
     }
   }
 
@@ -58,48 +55,55 @@ class _QuranPageViewerState extends State<QuranPageViewer> {
           child: Stack(
             children: [
               PageView.builder(
-                  itemCount: 604,
-                  controller: QuranController.pageController,
-                  itemBuilder: (context, index) {
-                    final linesForPage = widget.layoutLines
-                        .where((line) => line.pageNumber == index)
-                        .toList()
-                      ..sort((a, b) => a.lineNumber.compareTo(b.lineNumber));
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: linesForPage.map((line) {
-                        return QuranLineWidget(
-                          index: index,
-                          line: line,
-                          wordMap: widget.wordMap,
-                          fontFamily: 'p$index',
-                        );
-                      }).toList(),
-                    );
-                  }),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: Row(
-                  children: [
-                    Container(
-                        color: Colors.white,
-                        width: 60,
-                        height: 40,
-                        child: TextField(
-                          keyboardType: TextInputType.number,
-                          onSubmitted: (value) {
-                            if (int.parse(value) <= 604) {
-                              QuranController.pageController.jumpToPage(int.parse(value));
-                            }
-                          },
-                        )),
-                  ],
-                ),
+                controller: QuranController.pageController,
+                itemCount: 604,
+                itemBuilder: (context, pageIndex) {
+                  final pageLines = layoutLines
+                      .where((line) => line.pageNumber == pageIndex)
+                      .toList()
+                    ..sort((a, b) => a.lineNumber.compareTo(b.lineNumber));
+
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: pageLines.map((line) {
+                      return QuranLineWidget(
+                        index: pageIndex,
+                        line: line,
+                        wordSource: wordSource,
+                        fontFamily: 'p$pageIndex',
+                      );
+                    }).toList(),
+                  );
+                },
               ),
-        
+              _buildPageJumpField(),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPageJumpField() {
+    return Positioned(
+      bottom: 0,
+      right: 0,
+      child: Container(
+        color: Colors.white,
+        width: 60,
+        height: 40,
+        child: TextField(
+          keyboardType: TextInputType.number,
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.symmetric(horizontal: 8),
+          ),
+          onSubmitted: (value) {
+            final page = int.tryParse(value);
+            if (page != null && page >= 1 && page <= 604) {
+              QuranController.pageController.jumpToPage(page);
+            }
+          },
         ),
       ),
     );

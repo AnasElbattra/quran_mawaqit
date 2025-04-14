@@ -2,32 +2,9 @@
 class Assets {
   Assets._();
 
-  static const String componentsAyahActionSheet = 'lib/components/ayah_action_sheet.dart';
-  static const String componentsSurahNameBanner = 'lib/components/surah_name_banner.dart';
-  static const String constantsQcfV1Layout = 'lib/constants/qcf_v1_layout.dart';
-  static const String constantsQcfV1Word = 'lib/constants/qcf_v1_word.dart';
-  static const String constantsSurahData = 'lib/constants/surah_data.dart';
-  static const String controllerController = 'lib/controller/controller.dart';
-  static const String controllerHighlightController = 'lib/controller/highlight_controller.dart';
-  static const String fontsUthmanicHafs13 = 'lib/fonts/UthmanicHafs13.otf';
-  static const String fontsUthmanicHafsV22 = 'lib/fonts/uthmanic_hafs_v22.ttf';
-  static const String generatedAssets = 'lib/generated/assets.dart';
-  static const String images88802 = 'lib/images/surah_name_frame.png';
-  static const String imagesBasmala = 'lib/images/Basmala.png';
-  static const String libBasmellah = 'lib/basmellah.dart';
-  static const String libConstants = 'lib/constants.dart';
-  static const String libFontManager = 'lib/font_manager.dart';
-  static const String libHeaderWidget = 'lib/header_widget.dart';
-  static const String libListPagesWithDifferentFont = 'lib/list_pages_with_different_font.dart';
-  static const String libMain = 'lib/main.dart';
-  static const String libQuarterList = 'lib/quarter_list.dart';
-  static const String libQuranText = 'lib/quran_text.dart';
-  static const String libSurahsNameWithSymbol = 'lib/surahs_name_with_symbol.dart';
-  static const String libTailListPage = 'lib/tail_list_page.dart';
-  static const String modelsQcfLayoutModel = 'lib/models/qcf_layout_model.dart';
-  static const String modelsQcfWordModel = 'lib/models/qcf_word_model.dart';
-  static const String modelsSurahModel = 'lib/models/surah_model.dart';
-  static const String newTrialQuranLineWidget = 'lib/new_trial/quran_line_widget.dart';
-  static const String newTrialQuranPageViewer = 'lib/new_trial/quran_page_viewer.dart';
+  static const String fontsUthmanicHafs13 = 'assets/fonts/UthmanicHafs13.otf';
+  static const String fontsUthmanicHafsV22 = 'assets/fonts/uthmanic_hafs_v22.ttf';
+  static const String imagesBasmallah = 'assets/images/basmallah.png';
+  static const String imagesSurahNameFrame = 'assets/images/surah_name_frame.png';
 
 }

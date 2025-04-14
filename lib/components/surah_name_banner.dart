@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quran_mawaqit/generated/assets.dart';
 import 'package:quran_mawaqit/models/surah_model.dart';
 import 'package:sizer/sizer.dart';
 
-import '../surahs_name_with_symbol.dart';
+import '../constants/surahs_name_with_symbol.dart';
 
 class SurahNameBanner extends StatelessWidget {
   final Surah surahData;
@@ -15,7 +16,7 @@ class SurahNameBanner extends StatelessWidget {
       children: [
         Center(
           child: Image.asset(
-            "lib/images/surah_name_frame.png",
+            Assets.imagesSurahNameFrame,
             color: Colors.white,
           ),
         ),
