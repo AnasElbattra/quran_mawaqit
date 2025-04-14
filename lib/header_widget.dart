@@ -22,7 +22,7 @@ class HeaderWidget extends StatelessWidget {
           children: [
             Center(
               child: Image.asset(
-                "lib/images/888-02.png",
+                "lib/images/surah_name_frame.png",
                 color: Colors.white,
               ),
             ),

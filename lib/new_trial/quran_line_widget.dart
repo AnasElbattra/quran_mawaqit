@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../basmellah.dart';
+import '../components/ayah_action_sheet.dart';
 import '../components/surah_name_banner.dart';
 import '../constants/surah_data.dart';
 import '../controller/highlight_controller.dart';
@@ -32,7 +33,7 @@ class QuranLineWidget extends StatelessWidget {
     );
   }
 
-  List<InlineSpan> _buildWordSpans(Set<String> highlightedAyahs) {
+   List<InlineSpan> _buildWordSpans(Set<String> highlightedAyahs,BuildContext context) {
     List<InlineSpan> spans = [];
 
     if (line.firstWordId == null || line.lastWordId == null) return spans;
@@ -53,7 +54,25 @@ class QuranLineWidget extends StatelessWidget {
                 : Colors.transparent,
           ),
           recognizer: LongPressGestureRecognizer()
-            ..onLongPress = () => HighlightController.toggle(ayahKey),
+            ..onLongPress = () {
+              final ayahWords = wordMap.values
+                  .where((w) => w.location.startsWith(ayahKey))
+                  .map((w) => w.text)
+                  .join(' ');
+
+              HighlightController.toggle(ayahKey, ayahWords);
+
+              if (HighlightController.selectedAyah == ayahKey) {
+                showModalBottomSheet(
+                  context: context,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                  ),
+                  backgroundColor: Colors.grey[900],
+                  builder: (_) => AyahActionSheet(ayahText: ayahWords),
+                );
+              }
+            }
         ),
       );
     }
@@ -78,7 +97,7 @@ class QuranLineWidget extends StatelessWidget {
             } else if (line.isBasmallah) {
               spans = [WidgetSpan(child: Basmallah())];
             } else {
-              spans = _buildWordSpans(highlightedAyahs);
+              spans = _buildWordSpans(highlightedAyahs,context);
             }
 
             return RichText(
@@ -87,7 +106,7 @@ class QuranLineWidget extends StatelessWidget {
               text: TextSpan(
                 style: TextStyle(
                   fontFamily: fontFamily,
-                  fontSize: 19.sp,
+                  fontSize: 21.sp,
                   color: Colors.white,
                   height: 1.7,
                 ),

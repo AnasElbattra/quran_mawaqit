@@ -15,7 +15,7 @@ class SurahNameBanner extends StatelessWidget {
       children: [
         Center(
           child: Image.asset(
-            "lib/images/888-02.png",
+            "lib/images/surah_name_frame.png",
             color: Colors.white,
           ),
         ),
@@ -28,7 +28,7 @@ class SurahNameBanner extends StatelessWidget {
             style: TextStyle(
               height: 1,
               color: Colors.white,
-              fontSize: 6.5.sp,
+              fontSize: 12.sp,
               fontFamily: "UthmanicHafs13",
             ),
           ),
@@ -38,7 +38,7 @@ class SurahNameBanner extends StatelessWidget {
             " سُورَةُ ${SwarNameWithSymbole[surahData.id - 1]}",
             style: TextStyle(
               fontFamily: "UthmanicHafs13",
-              fontSize: 16.sp,
+              fontSize: 19.sp,
               color: Colors.white,
               height: 0,
             ),
@@ -54,7 +54,7 @@ class SurahNameBanner extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               height: 1,
-              fontSize: 6.5.sp,
+              fontSize: 12.sp,
               fontFamily: "UthmanicHafs13",
             ),
           ),

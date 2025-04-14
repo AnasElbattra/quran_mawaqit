@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String componentsAyahActionSheet = 'lib/components/ayah_action_sheet.dart';
   static const String componentsSurahNameBanner = 'lib/components/surah_name_banner.dart';
   static const String constantsQcfV1Layout = 'lib/constants/qcf_v1_layout.dart';
   static const String constantsQcfV1Word = 'lib/constants/qcf_v1_word.dart';
@@ -11,10 +12,8 @@ class Assets {
   static const String fontsUthmanicHafs13 = 'lib/fonts/UthmanicHafs13.otf';
   static const String fontsUthmanicHafsV22 = 'lib/fonts/uthmanic_hafs_v22.ttf';
   static const String generatedAssets = 'lib/generated/assets.dart';
-  static const String images88802 = 'lib/images/888-02.png';
+  static const String images88802 = 'lib/images/surah_name_frame.png';
   static const String imagesBasmala = 'lib/images/Basmala.png';
-  static const String imagesQPC V1 = 'lib/images/QPC V1.json';
-  static const String imagesQcfV1Layout = 'lib/images/qcf_v1_layout.json';
   static const String libBasmellah = 'lib/basmellah.dart';
   static const String libConstants = 'lib/constants.dart';
   static const String libFontManager = 'lib/font_manager.dart';
