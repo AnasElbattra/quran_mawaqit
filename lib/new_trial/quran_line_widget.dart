@@ -8,7 +8,6 @@ import '../components/surah_name_banner.dart';
 import '../constants/surah_data.dart';
 import '../controller/highlight_controller.dart';
 import '../models/qcf_layout_model.dart';
-import '../models/qcf_word_model.dart';
 import '../data_sources/quran_word_source.dart';
 
 class QuranLineWidget extends StatelessWidget {

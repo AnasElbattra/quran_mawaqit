@@ -58,11 +58,11 @@ class _QuranPageViewerState extends State<QuranPageViewer> {
                 controller: QuranController.pageController,
                 itemCount: 604,
                 itemBuilder: (context, pageIndex) {
+                  // collect lines for each page
                   final pageLines = layoutLines
                       .where((line) => line.pageNumber == pageIndex)
                       .toList()
                     ..sort((a, b) => a.lineNumber.compareTo(b.lineNumber));
-
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: pageLines.map((line) {
