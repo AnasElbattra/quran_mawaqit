@@ -1,0 +1,2 @@
+E:/quran_mawaqit/android/app/.cxx/RelWithDebInfo/6r211s6c/armeabi-v7a/CMakeFiles/edit_cache.dir
+E:/quran_mawaqit/android/app/.cxx/RelWithDebInfo/6r211s6c/armeabi-v7a/CMakeFiles/rebuild_cache.dir

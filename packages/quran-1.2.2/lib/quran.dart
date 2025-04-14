@@ -4,6 +4,7 @@ import 'package:quran/reciters.dart';
 // import 'package:quran/tafseers/jalalayn.dart';
 // import 'package:quran/tafseers/muyassar.dart';
 import 'package:quran/quran_text_normal.dart';
+import 'package:quran/surah_data.dart';
 // import 'package:quran/tafseers/siraj_tafseer.dart';
 // import 'package:quran/translations/amh-muhammedsadiqan.dart';
 // import 'package:quran/translations/en_saheeh.dart';
@@ -19,7 +20,6 @@ import 'juz_data.dart';
 import 'page_data.dart';
 import 'quran_text.dart';
 import 'sajdah_verses.dart';
-import 'surah_data.dart';
 
 ///Takes [pageNumber] and returns a list containing Surahs and the starting and ending Verse numbers in that page
 ///
@@ -216,6 +216,22 @@ String getVerseQCF(int surahNumber, int verseNumber,
   for (var i in quranText) {
     if (i['surah_number'] == surahNumber && i['verse_number'] == verseNumber) {
       verse = i['qcfData'].toString();//print(verse);
+      break;
+    }
+  }
+
+  if (verse == "") {
+    throw "No verse found with given surahNumber and verseNumber.\n\n";
+  }
+
+  return verse + (verseEndSymbol ? getVerseEndSymbol(verseNumber) : "");
+}
+String getVerseQCFV1(int surahNumber, int verseNumber,
+    {bool verseEndSymbol = false}) {
+  String verse = "";
+  for (var i in quranText) {
+    if (i['surah_number'] == surahNumber && i['verse_number'] == verseNumber) {
+      verse = i['qcfv1'].toString();//print(verse);
       break;
     }
   }

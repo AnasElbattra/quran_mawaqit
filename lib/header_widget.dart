@@ -24,7 +24,6 @@ class HeaderWidget extends StatelessWidget {
               child: Image.asset(
                 "lib/images/888-02.png",
                 color: Colors.white,
-                package: 'quran_mawaqit',
               ),
             ),
             Positioned(
@@ -38,7 +37,6 @@ class HeaderWidget extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 6.5.sp,
                     fontFamily: "UthmanicHafs13",
-                  package: 'quran_mawaqit',
                 ),
               ),
             ),
@@ -50,7 +48,6 @@ class HeaderWidget extends StatelessWidget {
                   fontSize: 16.sp,
                   color: Colors.white,
                   height: 0,
-                  package: 'quran_mawaqit',
 
                 ),
                 textAlign: TextAlign.center,
@@ -67,7 +64,6 @@ class HeaderWidget extends StatelessWidget {
                   height: 1,
                   fontSize: 6.5.sp,
                   fontFamily: "UthmanicHafs13",
-                  package: 'quran_mawaqit',
 
                 ),
               ),
