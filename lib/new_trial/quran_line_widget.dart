@@ -64,6 +64,7 @@ class QuranLineWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: MediaQuery.of(context).size.height/16,
       width: double.infinity,
       child: Center(
         child: ValueListenableBuilder<Set<String>>(
