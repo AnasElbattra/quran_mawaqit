@@ -1,10 +1,10 @@
-import '../constants/qpc_v1_word.dart';
+import '../constants/qpc_v2_word.dart';
 import '../models/qpc_word_model.dart';
 import 'quran_word_source.dart';
 
-class QpcV1WordSource implements QuranWordSource {
+class QpcV2WordSource implements QuranWordSource {
   final Map<int, QpcWordModel> _wordMap = Map.fromEntries(
-    qpcV1Word.values.map((value) {
+    qpcV2Word.values.map((value) {
       final model = QpcWordModel.fromMap(value);
       return MapEntry(model.wordIndex, model);
     }),

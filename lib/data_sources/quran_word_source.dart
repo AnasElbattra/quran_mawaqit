@@ -1,9 +1,9 @@
-import '../models/qcf_word_model.dart';
+import '../models/qpc_word_model.dart';
 
 abstract class QuranWordSource {
-  Map<int, QcfWordModel> getWordMap();
+  Map<int, QpcWordModel> getWordMap();
 
-  QcfWordModel? getWordById(int id);
+  QpcWordModel? getWordById(int id);
 
   String getAyahText(String ayahKey); // example: "2:255"
 }

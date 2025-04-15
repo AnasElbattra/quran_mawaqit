@@ -70,7 +70,7 @@ class _QuranPageViewerState extends State<QuranPageViewer> {
                         index: pageIndex,
                         line: line,
                         wordSource: wordSource,
-                        fontFamily: 'p$pageIndex',
+                        fontFamily: 'qpc_v2_p$pageIndex',
                       );
                     }).toList(),
                   );

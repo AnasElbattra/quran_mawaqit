@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'controller/FontLoaderUtil.dart';
 import 'data_sources/qpc_v1_layout_source.dart';
 import 'data_sources/qpc_v1_word_source.dart';
+import 'data_sources/qpc_v2_layout_source.dart';
+import 'data_sources/qpc_v2_word_source.dart';
 import 'new_trial/quran_page_viewer.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await FontLoaderUtil.extractAndLoadFonts();
+
   runApp(const MyApp());
 }
 
@@ -23,8 +28,8 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           home: QuranPageViewer(
-            layoutSource: QpcV1LayoutSource(),
-            wordSource: QpcV1WordSource(),
+            layoutSource: QpcV2LayoutSource(),
+            wordSource: QpcV2WordSource(),
           ),
         );
       },

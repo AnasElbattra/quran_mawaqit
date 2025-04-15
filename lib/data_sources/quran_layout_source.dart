@@ -1,5 +1,5 @@
-import '../models/qcf_layout_model.dart';
+import '../models/qpc_layout_model.dart';
 
 abstract class QuranLayoutSource {
-  List<QcfLineModel> getLines();
+  List<QpcLineModel> getLines();
 }

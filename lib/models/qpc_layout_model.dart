@@ -1,6 +1,6 @@
-import '../constants/qcf_v1_layout.dart';
+import '../constants/qpc_v1_layout.dart';
 
-class QcfLineModel {
+class QpcLineModel {
   final int pageNumber;
   final int lineNumber;
   final bool isSurahName;
@@ -10,7 +10,7 @@ class QcfLineModel {
   final int? lastWordId;
   final int? surahNumber;
 
-  QcfLineModel({
+  QpcLineModel({
     required this.pageNumber,
     required this.lineNumber,
     required this.isSurahName,
@@ -21,8 +21,8 @@ class QcfLineModel {
     this.surahNumber,
   });
 
-  factory QcfLineModel.fromMap(Map<String, dynamic> map) {
-    return QcfLineModel(
+  factory QpcLineModel.fromMap(Map<String, dynamic> map) {
+    return QpcLineModel(
       pageNumber: map['page_number'],
       lineNumber: map['line_number'],
       isSurahName: map['line_type']=="surah_name",
@@ -33,8 +33,8 @@ class QcfLineModel {
       surahNumber: map['surah_number'] == "" ? null : int.tryParse(map['surah_number'].toString()),
     );
   }
-  static List<QcfLineModel> get  layoutLines {
-    return   qcfV1Layout.map((e) => QcfLineModel.fromMap(e)).toList();
+  static List<QpcLineModel> get  layoutLines {
+    return   qpcV1Layout.map((e) => QpcLineModel.fromMap(e)).toList();
 
   }
 }
