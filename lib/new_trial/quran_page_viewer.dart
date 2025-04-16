@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:preload_page_view/preload_page_view.dart';
+import 'package:preload_page_view/preload_page_view.dart' hide PageScrollPhysics;
 import 'package:quran_mawaqit/controller/controller.dart';
 import 'package:quran_mawaqit/controller/font_manager.dart';
 import 'package:quran_mawaqit/data_sources/quran_layout_source.dart';
@@ -26,7 +26,6 @@ class _QuranPageViewerState extends State<QuranPageViewer> {
   late final List<QpcLineModel> layoutLines;
   late final QuranWordSource wordSource;
   late final Map<int, List<QpcLineModel>> pageLinesMap;
-  final Map<int, Widget> pageCache = {};
 
   @override
   void initState() {
@@ -69,30 +68,27 @@ class _QuranPageViewerState extends State<QuranPageViewer> {
           child: Stack(
             children: [
               PreloadPageView.builder(
-                // controller: QuranController.pageController,
+                controller: QuranController.pageController,
+
                 preloadPagesCount: 3,
                 itemCount: 604,
                 itemBuilder: (context, pageIndex) {
-                  // ✅ use cache if exists
-                  if (pageCache.containsKey(pageIndex)) {
-                    return pageCache[pageIndex]!;
-                  }
-
                   final pageLines = pageLinesMap[pageIndex] ?? [];
 
-                  final pageWidget = Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: pageLines.map((line) {
-                      return QuranLineWidget(
-                        index: pageIndex,
-                        line: line,
-                        wordSource: wordSource,
-                        fontFamily: 'qpc_v2_p$pageIndex',
-                      );
-                    }).toList(),
+                  final pageWidget = RepaintBoundary(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: pageLines.map((line) {
+                        return QuranLineWidget(
+                          index: pageIndex,
+                          line: line,
+                          wordSource: wordSource,
+                          fontFamily: 'qpc_v2_p$pageIndex',
+                        );
+                      }).toList(),
+                    ),
                   );
 
-                  pageCache[pageIndex] = pageWidget;
                   return pageWidget;
                 },
               ),

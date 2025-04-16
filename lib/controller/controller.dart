@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:preload_page_view/preload_page_view.dart';
 
 class QuranController {
-  static PageController pageController = PageController();
+  static PreloadPageController pageController = PreloadPageController(viewportFraction: .99);
 
 
 }
