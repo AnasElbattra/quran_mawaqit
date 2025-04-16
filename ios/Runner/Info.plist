@@ -45,5 +45,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>io.flutter.embedding.ios.EnableImpeller</key>
+    <false/>
 </dict>
 </plist>
