@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:preload_page_view/preload_page_view.dart';
 import 'package:quran_mawaqit/controller/controller.dart';
 import 'package:quran_mawaqit/controller/font_manager.dart';
 import 'package:quran_mawaqit/data_sources/quran_layout_source.dart';
 import 'package:quran_mawaqit/data_sources/quran_word_source.dart';
+import 'package:quran_mawaqit/models/qpc_layout_model.dart';
 import 'package:quran_mawaqit/new_trial/quran_line_widget.dart';
 
 class QuranPageViewer extends StatefulWidget {
@@ -21,15 +23,27 @@ class QuranPageViewer extends StatefulWidget {
 
 class _QuranPageViewerState extends State<QuranPageViewer> {
   List<String> fonts = [];
-
-  late final List layoutLines;
+  late final List<QpcLineModel> layoutLines;
   late final QuranWordSource wordSource;
+  late final Map<int, List<QpcLineModel>> pageLinesMap;
+  final Map<int, Widget> pageCache = {};
 
   @override
   void initState() {
     super.initState();
-    layoutLines = widget.layoutSource.getLines();
+
+    layoutLines = widget.layoutSource.getLines().cast<QpcLineModel>();
     wordSource = widget.wordSource;
+
+    final tempMap = <int, List<QpcLineModel>>{};
+    for (var line in layoutLines) {
+      tempMap.putIfAbsent(line.pageNumber, () => []).add(line);
+    }
+    tempMap.forEach((_, lines) {
+      lines.sort((a, b) => a.lineNumber.compareTo(b.lineNumber));
+    });
+    pageLinesMap = tempMap;
+
     _initFonts();
   }
 
@@ -54,16 +68,19 @@ class _QuranPageViewerState extends State<QuranPageViewer> {
           textDirection: TextDirection.rtl,
           child: Stack(
             children: [
-              PageView.builder(
-                controller: QuranController.pageController,
+              PreloadPageView.builder(
+                // controller: QuranController.pageController,
+                preloadPagesCount: 3,
                 itemCount: 604,
                 itemBuilder: (context, pageIndex) {
-                  // collect lines for each page
-                  final pageLines = layoutLines
-                      .where((line) => line.pageNumber == pageIndex)
-                      .toList()
-                    ..sort((a, b) => a.lineNumber.compareTo(b.lineNumber));
-                  return Column(
+                  // ✅ use cache if exists
+                  if (pageCache.containsKey(pageIndex)) {
+                    return pageCache[pageIndex]!;
+                  }
+
+                  final pageLines = pageLinesMap[pageIndex] ?? [];
+
+                  final pageWidget = Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: pageLines.map((line) {
                       return QuranLineWidget(
@@ -74,6 +91,9 @@ class _QuranPageViewerState extends State<QuranPageViewer> {
                       );
                     }).toList(),
                   );
+
+                  pageCache[pageIndex] = pageWidget;
+                  return pageWidget;
                 },
               ),
               _buildPageJumpField(),

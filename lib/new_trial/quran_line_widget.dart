@@ -49,7 +49,7 @@ class QuranLineWidget extends StatelessWidget {
 
       spans.add(
         TextSpan(
-          text: word.text,
+          text: '${word.text}${'\u200A'}',
           style: TextStyle(
             backgroundColor: isHighlighted
                 ? Colors.deepPurple.withOpacity(0.4)
@@ -104,7 +104,7 @@ class QuranLineWidget extends StatelessWidget {
               text: TextSpan(
                 style: TextStyle(
                   fontFamily: fontFamily,
-                  fontSize: 21.sp,
+                  fontSize: 19.4.sp,
                   color: Colors.white,
                   height: 1.7,
                 ),
