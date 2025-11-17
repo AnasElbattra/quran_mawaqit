@@ -1,0 +1,53 @@
+{
+  "active": false,
+  "backgroundColor": "0xf1c40fff",
+  "fontColor": "0xFFe74c3c",
+  "theme": {
+    "light": {
+      "backgroundColor": "0xFF318a92",
+      "fontColor": "0xFFFFFFFF"
+    },
+    "dark": {
+      "backgroundColor": "0xFF318a92",
+      "fontColor": "0xFFFFFFFF"
+    }
+  },
+  "bypassedCountries": ["jo"],
+  "showCallToActionIcon": true,
+  "url":"https://www.qurbane.com/" ,
+  "en": {
+    "title": "MAWAQIT recommends QURBANE for Eid 2025. ",
+    "body": "Let's support our brothers in need and offer your sheep now 👉"
+  },
+  "fr": {
+    "title": "MAWAQIT vous recommande QURBANE ! ",
+    "body": "⚠️ C’est le dernier moment pour agir Réservez votre sacrifice aujourd’hui et ne manquez pas cette sunna 👉"
+  },
+  "ar": { 
+     "title": " .مواقيت تنصحكم بقربان لعيد الأضحى 2025",
+     "body": "ادعم إخواننا المحتاجين وقدم خروفك الآن"
+  },
+  "de": {
+    "title": "MAWAQIT empfiehlt Ihnen QURBANE für das Eid 2025.",
+    "body": "Unterstützen Sie unsere bedürftigen Brüder und bieten Sie Ihr Schaf jetzt an 👉."
+  },
+  "it": {
+    "title": "MAWAQIT raccomanda QURBANE per Eid 2025.",
+    "body": "Sostenete i nostri fratelli in difficoltà e offrite le vostre pecore adesso 👉"
+  },
+  "es": {
+    "title": "MAWAQIT recomienda QURBANE para Eid 2025. ",
+    "body": "Apoya a nuestros hermanos necesitados y ofrece tus ovejas ahora 👉"
+  },
+  "nl": {
+    "title": "MAWAQIT beveelt QURBANE aan voor Eid 2025.",
+    "body": "Steun onze broeders in nood en bied nu je schapen aan 👉"
+  },
+  "donateButton": {
+    "active": false,
+    "en": {
+      "title": "Keep MAWAQIT free without Ads",
+      "body": "Help MAWAQIT to continue and be always as a WAQF by making a donation."
+    }
+  }
+}
