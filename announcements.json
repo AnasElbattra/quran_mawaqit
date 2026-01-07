@@ -12,7 +12,7 @@
       "fontColor": "0xFFFFFFFF"
     }
   },
-  "bypassedCountries": ["jo","Eg"],
+  "bypassedCountries": ["jo"],
   "showCallToActionIcon": true,
   "url":"https://www.qurbane.com/" ,
   "en": {
