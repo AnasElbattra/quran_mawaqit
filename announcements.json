@@ -12,7 +12,7 @@
       "fontColor": "0xFFFFFFFF"
     }
   },
-  "bypassedCountries": ["jo"],
+  "bypassedCountries": ["jo","eg"],
   "showCallToActionIcon": true,
   "url":"https://github.com/mawaqit" ,
   "en": {
